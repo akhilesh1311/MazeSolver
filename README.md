@@ -1,87 +1,67 @@
-# Project Title
+# MazeSolver
 
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+We generate a random maze, and use A*, BFS and DFS algorithms to solve it.
+Next, we use local search algorithm of random walk to find a maze that is difficult to be solved by A*, BFS and DFS.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
 ```
-Give examples
+pip install -r requirements.txt
 ```
 
-### Installing
+## Running the application
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+For help on input:
 ```
-Give the example
+python main.py -h
 ```
 
-And repeat
-
+For generating an easy maze:
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+python3 main.py -d 20 -p 0.2 -type easy -solver ase
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+For generating a hard maze:
 ```
-Give an example
+python3 main.py -d 20 -p 0.2 -type hard -solver ase -step 800 -diff 2 -iters 5000
 ```
 
-## Deployment
+For visualization:
+```
+python q2.py
+```
 
-Add additional notes about how to deploy this on a live system
+### Runtime Parameters
 
-## Built With
+* -h, --help : Show help message and exit
+* -d <int> : maze of dimension (dim, dim)
+* -p <float> : probability of each cell being a blocked cell
+* -type <easy/hard> : easy/hard maze
+* -solver <bfs/dfs/ase/asm> : solver from a set of solvers of {dfs, bfs, ase, asm} ase - A* with Manhattan Distance, asm - A* with Euclidean Distance
+* -step <int> : set a value of step to generate a hard maze.
+* -diff <float> : set a % threshold difference value to generate a hard maze.
+* -iters <int> : set the maximum number of iterations of hill climbing to generate a hard maze.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
+## Sample Visualizations
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+A hard maze found using local search for A* with Euclidean distance.
 
-## Versioning
+![Alt text](ase_1.png?raw=true "A* Euclidean")
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
-## Authors
+A hard maze found using local search for BFS.
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+![Alt text](bfs_1.png?raw=true "BFS")
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
+A hard maze found using local search for DFS.
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+![Alt text](dfs_1.png?raw=true "DFS")
+
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Kunal Shah
+* Vedang Mehta
+* Nick Romanov
